@@ -9,5 +9,8 @@
         <module name="TestGit" />
       </profile>
     </annotationProcessing>
+    <bytecodeTargetLevel>
+      <module name="Tigabo's_Project" target="19" />
+    </bytecodeTargetLevel>
   </component>
 </project>
