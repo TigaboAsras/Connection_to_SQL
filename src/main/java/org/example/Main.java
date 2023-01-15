@@ -7,6 +7,8 @@ public class Main {
     public static void main(String[] args) {
 
         System.out.println("SHKSUKA");
-        System.out.println("trivago")
+        System.out.println("trivago");
+        System.out.println("my partner is neoray");
+
     }
 }
