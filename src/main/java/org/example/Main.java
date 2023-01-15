@@ -9,6 +9,7 @@ public class Main {
         System.out.println("SHKSUKA");
         System.out.println("trivago");
         System.out.println("my partner is neoray");
+        System.out.println("HONTOZA");
 
     }
 }
