@@ -6,10 +6,15 @@ package org.example;
 public class Main {
     public static void main(String[] args) {
 
-        System.out.println("SHKSUKA");
-        System.out.println("trivago");
-        System.out.println("my partner is neoray");
-        System.out.println("HONTOZA");
+        ConnectionToDB connectionMain=new ConnectionToDB();
+        //connectionMain.insert("lsbv","zdvluvhd","ajebf");
+        //connectionMain.veiwTable();
+       /* connectionMain.Update("nehoraii","afaeg","46555",9);
+        connectionMain.veiwTable();
+        connectionMain.Update("tes","bule","67543",9);
+        connectionMain.veiwTable();*/
+        connectionMain.deleteRow(11);
+        connectionMain.veiwTable();
 
     }
 }
