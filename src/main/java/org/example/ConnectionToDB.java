@@ -20,12 +20,17 @@ public class ConnectionToDB {
 
         try {
             String query="INSERT INTO students_list(first_name,last_name,phone_number)"+
-                    "VALUES('"+Name+"','"+lastName+"','"+Phone+"')";
+                    "VALUES(?,?,?)";
             Connection connection=openConnection();
             System.out.println("connection good");
             Statement statement=connection.createStatement();
             System.out.println("Insert Good");
-            int readable =statement.executeUpdate(query);
+            PreparedStatement sql = connection.prepareStatement(query);
+            sql.setString(1,Name);
+            sql.setString(2,lastName);
+            sql.setString(3,Phone);
+            sql.executeUpdate();
+           // int readable =statement.executeUpdate(query); לשאול?????
             connection.close();
 
         } catch (SQLException e) {
@@ -57,12 +62,16 @@ public class ConnectionToDB {
     }
     public void Update(String Name,String lastName,String Phone,int ConditionId){
         try {
-            String query=String.format("UPDATE \"students_list\""+
-                    "SET first_name='%s',last_name='%s',phone_number='%s'"+
-                    "WHERE id= '%s'",Name,lastName,Phone,Integer.toString(ConditionId));
+            String query="UPDATE students_list SET first_name=?,last_name=?,phone_number=? WHERE id= ?";
             Connection connection=openConnection();
             Statement statement= connection.createStatement();
-            int resultSet=statement.executeUpdate(query);
+            PreparedStatement sql = connection.prepareStatement(query);
+            sql.setString(1,Name);
+            sql.setString(2,lastName);
+            sql.setString(3,Phone);
+            sql.setInt(4,ConditionId);
+            sql.executeUpdate();
+            //int resultSet=statement.executeUpdate(query);
             connection.close();
         } catch (SQLException e) {
             throw new RuntimeException(e);
