@@ -16,7 +16,11 @@ public class Main {
         //connectionMain.deleteRow(11);
        /* connectionMain.insert("ezra","tara","05643");
         connectionMain.insert("oshri","samimi","057543");*/
-        connectionMain.Update("LALALA","bLALALALA","876543",14);
+       /* connectionMain.Update("LALALA","bLALALALA","876543",14);
+        connectionMain.veiwTable();*/
+        /*ListSQL tmp = new ListSQL();
+        tmp.List();*/
+       connectionMain.bulabula();
         connectionMain.veiwTable();
 
 

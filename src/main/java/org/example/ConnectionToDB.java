@@ -1,8 +1,11 @@
 package org.example;
 import java.sql.*;
+import java.util.ArrayList;
+import java.util.List;
 
 public class ConnectionToDB {
-    private Connection openConnection(){
+
+   private Connection openConnection(){
         String jdbcURL = "jdbc:postgresql://localhost:5432/StudentsList";
         String userName = "postgres";
         String password = "19975519";
@@ -91,7 +94,52 @@ public class ConnectionToDB {
         }
 
     }
+    public void bulabula(){
+        Connection con = openConnection();
+        List<Entity> listStudent1 = new ArrayList<Entity>();
+        listStudent1=DBlist(con,listStudent1);
+         boolean flag = true;
+        for (Entity student:listStudent1) {
+            if(student.first_name.equals("ezra")){
+                student.first_name="matboh";
+                student.last_name ="marmita";
+                student.phone_num="3857027582";
+                Update( student.first_name,student.last_name,student.phone_num,student.id);
+                flag = false;
+            }
+        }
+       if(flag){
+           insert("matboh","marmita","3857027582");
+      }
+       /* if(!flag){
+            System.out.println("seccsess");
+        }
+        else{
+            System.out.println("nooooooooo");
+        }
+*/
 
+    }
+    public List<Entity> DBlist(Connection con,List<Entity> listStudent1){
+        try {
+            Statement statement=con.createStatement();
+            String query="SELECT * FROM students_list;";
+            ResultSet resultSet=statement.executeQuery(query);
+            while (resultSet.next()){
+                int id=resultSet.getInt("id");
+                String Name=resultSet.getString("first_name");
+                String lastName=resultSet.getString("last_name");
+                String phoneNumber=resultSet.getString("phone_number");
+                listStudent1.add(new Entity(id,Name,lastName,phoneNumber));
+            }
+            con.close();
+        } catch (SQLException e) {
+            e.printStackTrace();
+            System.out.println("Error");
+            throw new RuntimeException(e);
+        }
+        return listStudent1;
+    }
 
 
     }
